@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OneKash Labs</title>
+<link rel="preload" href="../fonts/bricolage-grotesque-500-800.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: 'Bricolage Grotesque'; font-weight: 500 800; font-display: swap; src: url(../fonts/bricolage-grotesque-500-800.woff2) format('woff2'); }
+  @font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 400; font-display: swap; src: url(../fonts/atkinson-hyperlegible-400.woff2) format('woff2'); }
+  @font-face { font-family: 'Atkinson Hyperlegible'; font-weight: 700; font-display: swap; src: url(../fonts/atkinson-hyperlegible-700.woff2) format('woff2'); }
+
+  :root {
+    --paper: #FBF6EA; --ink: #0B1B33; --ink-soft: #4B5568; --teal: #1E9E8A; --wall: #134E45;
+    --navy: #020727; --gold: #F2C14E; --pink: #EF5F78; --blue: #4A90D9;
+    --blue-ink: #2763B0; --pink-ink: #CF3F5C; --teal-ink: #0F7A69;
+    --display: "Bricolage Grotesque", "Atkinson Hyperlegible", sans-serif;
+    --body: "Atkinson Hyperlegible", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 19px; line-height: 1.5; overflow-x: clip; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
+  .name { font-family: var(--display); font-weight: 800; font-size: 22px; text-decoration: none; letter-spacing: -.3px; }
+  .top a.mail { font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--teal); padding-bottom: 2px; }
+
+  .btn { display: inline-block; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; padding: 16px 28px; border-radius: 999px; font-size: 18px; }
+  .btn:hover { background: var(--teal-ink); }
+
+  /* Hero: the headline beside a phone whose home screen fills in, app by app, until one slot is left for yours. */
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 88px); align-items: center; padding: clamp(32px, 6vw, 72px) 0 clamp(72px, 10vw, 136px); }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 8.4vw, 108px); line-height: .94; letter-spacing: -.035em; }
+  .hero p { margin: 28px 0 36px; max-width: 30ch; color: var(--ink-soft); font-size: 21px; }
+
+  .stage { position: relative; justify-self: center; width: min(100%, 380px); }
+  .stage .phone { position: relative; z-index: 1; }
+  .phone {
+    background: #0F2A25; border-radius: 52px; padding: 12px; transform: rotate(-4deg);
+    width: min(100%, 360px); margin: 0 auto;
+    box-shadow: 0 40px 80px -20px rgba(15, 42, 37, .45), 0 0 0 1px rgba(255, 255, 255, .06) inset;
+  }
+  .wall {
+    border-radius: 42px; padding: 14px 22px 22px; color: #E9F6F2;
+    aspect-ratio: 9 / 17; display: flex; flex-direction: column;
+    background: radial-gradient(120% 80% at 80% 0%, #1E6E61 0%, var(--wall) 55%, #0E3B34 100%);
+  }
+  .status { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; padding: 2px 6px 20px; opacity: .85; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 12px; }
+  .slot { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 13px; line-height: 1.2; text-align: center; text-decoration: none; }
+  .slot img, .slot .yours { width: 72px; height: 72px; border-radius: 20px; box-shadow: 0 8px 18px rgba(0, 0, 0, .25); }
+  .slot .yours { border: 3px dashed var(--gold); box-shadow: none; display: grid; place-items: center; font: 300 44px/1 var(--display); color: var(--gold); }
+  .slot.mine span { color: var(--gold); font-weight: 700; }
+  .slot.ghost { visibility: hidden; }
+  .wallkash { width: 62%; margin: auto auto 10px; display: block; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .35)); }
+  .dock { height: 76px; border-radius: 24px; background: rgba(255, 255, 255, .1); }
+
+  @keyframes install { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
+  @keyframes beckon { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+  .slot { animation: install .45s cubic-bezier(.3, 1.6, .5, 1) both; }
+  .slot:nth-child(1) { animation-delay: .25s; } .slot:nth-child(2) { animation-delay: .45s; }
+  .slot:nth-child(3) { animation-delay: .65s; } .slot:nth-child(4) { animation-delay: .85s; }
+  .slot.mine { animation-delay: 1.25s; }
+  .slot.mine .yours { animation: beckon 1s ease-in-out 1.9s 2; }
+  @media (prefers-reduced-motion: reduce) { .slot, .slot.mine .yours { animation: none; } }
+
+  /* Offerings: three words set as type, each with one line. */
+  .offers { padding: clamp(56px, 8vw, 104px) 0; }
+  .offer { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 24px; padding: 22px 0; }
+  .offer + .offer { border-top: 1px solid #E4DCC6; }
+  .offer h2 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 8vw, 112px); line-height: 1; letter-spacing: -.04em; }
+  .offer p { font-size: 21px; color: var(--ink-soft); max-width: 34ch; }
+  .offer.learn h2 { color: var(--blue-ink); } .offer.custom h2 { color: var(--pink-ink); } .offer.deploy h2 { color: var(--teal-ink); }
+  .offer .wait { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--blue-ink); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+  /* Proof: the one dark band, three of the apps fanned out as phones showing their real screens. */
+  .built { background: var(--navy); color: #EEF0F7; padding: clamp(72px, 9vw, 120px) 0 0; overflow: hidden; }
+  .built h2 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 5.4vw, 68px); line-height: 1; letter-spacing: -.03em; max-width: 14ch; }
+  .built .lead { color: #A9AECB; margin-top: 16px; max-width: 40ch; }
+  .fan { position: relative; height: clamp(360px, 46vw, 560px); margin-top: 56px; }
+  .fan figure { position: absolute; bottom: -60px; width: clamp(200px, 25vw, 300px); }
+  .fan .device { background: #1B1F3A; border-radius: 40px; padding: 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, .5); }
+  .fan .device img { display: block; width: 100%; border-radius: 30px; aspect-ratio: 9 / 15; object-fit: cover; object-position: top; }
+  .fan figcaption { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .fan figcaption a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .fan figcaption a:hover { color: var(--gold); }
+  .fan figcaption img { width: 32px; height: 32px; border-radius: 9px; }
+  .fan .cal { left: 4%; transform: rotate(-7deg); }
+  .fan .pass { left: 50%; translate: -50% 0; bottom: -20px; z-index: 2; }
+  .fan .cake { right: 4%; transform: rotate(7deg); }
+  .tool { border-top: 1px solid #23284E; margin-top: 0; padding: 28px 0 36px; display: flex; align-items: center; gap: 16px; color: #A9AECB; position: relative; z-index: 3; background: var(--navy); }
+  .tool img { width: 40px; height: 40px; border-radius: 10px; }
+  .tool strong { color: #EEF0F7; font-weight: 700; }
+
+  .talkband { background: var(--gold); }
+  .talkband .btn { background: var(--navy); color: var(--gold); }
+  .talkband .btn:hover { background: var(--ink); }
+  .talk { display: block; padding: clamp(72px, 10vw, 128px) 0; }
+  .talk img { width: clamp(140px, 18vw, 220px); }
+  .talk h2 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6vw, 80px); line-height: 1; letter-spacing: -.035em; margin-bottom: 28px; max-width: 14ch; }
+
+  footer { background: var(--navy); color: #A9AECB; font-size: 16px; }
+  .foot { padding-top: 28px; padding-bottom: 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 820px) {
+    .hero, .offer, .talk { grid-template-columns: 1fr; }
+    .phone { width: min(70vw, 280px); transform: rotate(-3deg); }
+    .stage { width: min(76vw, 300px); }
+    .fan figure { width: 46vw; }
+    .fan .cal { left: -6%; } .fan .cake { right: -6%; }
+  }
+  @media (max-width: 480px) { .top a.mail { font-size: 15px; } }
+  :root { --paper: #020727; --ink: #F3EFE4; --ink-soft: #A9AECB; }
+  .offer h2, .offer.learn h2, .offer.custom h2, .offer.deploy h2 { color: var(--ink); }
+  .offer .wait { color: var(--gold); }
+  .offer + .offer { border-top-color: #1C2350; }
+  .btn { background: var(--teal); color: #020727; } .btn:hover { background: var(--gold); }
+  .built { background: #0B1240; } .built .tool { background: #0B1240; border-top-color: #222A5A; }
+  .talkband { background: var(--teal); } .talkband h2 { color: #020727; } .talkband .btn { background: #020727; color: #F3EFE4; }
+  footer { background: #01041A; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="#">OneKash Labs</a>
+    <a class="mail" href="#" data-mail=""><span data-addr>kash at onekash dot org</span></a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>What should we build together?</h1>
+      <p>We make private, open-source apps. We can teach you to build one, or make an open-source app yours.</p>
+      <a class="btn" href="#" data-mail="">Email us</a>
+    </div>
+    <div class="stage">
+    <div class="phone" aria-label="Apps by OneKash Labs, and a space for yours">
+      <div class="wall">
+        <div class="status" aria-hidden="true"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="grid">
+          <a class="slot" href="https://kashcal.onekash.org"><img src="../img/kashcal.png" alt=""><span>KashCal</span></a>
+          <a class="slot" href="https://kashpass.onekash.org"><img src="../img/kashpass.png" alt=""><span>KashPass</span></a>
+          <a class="slot" href="https://kashcake.onekash.org"><img src="../img/kashcake.png" alt=""><span>KashCake</span></a>
+          <a class="slot" href="https://github.com/icloud-calendar-mcp/icloud-calendar-mcp"><img src="../img/mcp.svg" alt=""><span>iCloud Calendar MCP</span></a>
+          <a class="slot mine" href="#" data-mail=""><div class="yours" aria-hidden="true">+</div><span>Yours?</span></a>
+          <div class="slot ghost" aria-hidden="true"></div>
+        </div>
+        <img class="wallkash" src="../img/kash-wave.webp" alt="">
+        <div class="dock" aria-hidden="true"></div>
+      </div>
+    </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="offers" aria-label="What we do">
+    <div class="offer learn"><h2>Learn</h2><p>We'll teach you to build an app, from first screen to store.<br><a class="wait" href="#" data-mail="Bootcamp waitlist">Join the bootcamp waitlist</a></p></div>
+    <div class="offer custom"><h2>Customize</h2><p>An open-source app whose license allows it, with your name, colours and features.</p></div>
+    <div class="offer deploy"><h2>Deploy</h2><p>Our apps set up for your team and kept running.</p></div>
+  </section>
+</div>
+
+<section class="built">
+  <div class="wrap">
+    <h2>Apps we make and maintain.</h2>
+    <p class="lead">Open source, no ads, nothing collected. Out in the world today.</p>
+    <div class="fan">
+      <figure class="cal"><figcaption><a href="https://kashcal.onekash.org"><img src="../img/kashcal.png" alt="">KashCal</a></figcaption><div class="device"><img src="../img/screen-kashcal.png" alt="KashCal's week view"></div></figure>
+      <figure class="pass"><figcaption><a href="https://kashpass.onekash.org"><img src="../img/kashpass.png" alt="">KashPass</a></figcaption><div class="device"><img src="../img/screen-kashpass.png" alt="KashPass's entry list"></div></figure>
+      <figure class="cake"><figcaption><a href="https://kashcake.onekash.org"><img src="../img/kashcake.png" alt="">KashCake</a></figcaption><div class="device"><img src="../img/screen-kashcake.png" alt="KashCake's list of upcoming dates"></div></figure>
+    </div>
+    <p class="tool"><img src="../img/mcp.svg" alt=""><span><a href="https://github.com/icloud-calendar-mcp/icloud-calendar-mcp"><strong>iCloud Calendar MCP</strong></a>: calendar access for AI agents.</span></p>
+  </div>
+</section>
+
+<section class="talkband">
+<div class="wrap">
+  <div class="talk" id="talk">
+    <div>
+      <h2>Tell us what you have in mind.</h2>
+      <a class="btn" href="#" data-mail="">Email <span data-addr>kash at onekash dot org</span></a>
+    </div>
+  </div>
+</div>
+</section>
+<footer><div class="wrap foot"><span>Open source. No ads. Your data stays yours.</span><span>OneKash Labs</span></div></footer>
+<script>
+  // Builds the address at load, so it never appears in the page source for scrapers to read.
+  (function () {
+    var a = ['kash', 'onekash.org'].join('@');
+    document.querySelectorAll('[data-mail]').forEach(function (el) {
+      var s = el.getAttribute('data-mail');
+      el.href = 'mailto:' + a + (s ? '?subject=' + encodeURIComponent(s) : '');
+    });
+    document.querySelectorAll('[data-addr]').forEach(function (el) { el.textContent = a; });
+  })();
+</script>
+</body>
+</html>

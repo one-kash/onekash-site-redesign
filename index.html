@@ -37,9 +37,6 @@
   .hero p { margin: 28px 0 36px; max-width: 30ch; color: var(--ink-soft); font-size: 21px; }
 
   .stage { position: relative; justify-self: center; width: min(100%, 380px); }
-  .stage::before, .stage::after { content: ""; position: absolute; inset: 6% -4% 4% -4%; border-radius: 56px; }
-  .stage::before { background: var(--gold); transform: rotate(9deg) translate(10%, -2%); }
-  .stage::after { background: var(--blue); transform: rotate(-12deg) translate(-12%, 4%); }
   .stage .phone { position: relative; z-index: 1; }
   .phone {
     background: #0F2A25; border-radius: 52px; padding: 12px; transform: rotate(-4deg);
@@ -87,7 +84,7 @@
   .fan figure { position: absolute; bottom: -60px; width: clamp(200px, 25vw, 300px); }
   .fan .device { background: #1B1F3A; border-radius: 40px; padding: 10px; box-shadow: 0 30px 60px rgba(0, 0, 0, .5); }
   .fan .device img { display: block; width: 100%; border-radius: 30px; aspect-ratio: 9 / 15; object-fit: cover; object-position: top; }
-  .fan figcaption { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .fan figcaption { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--display); font-weight: 700; font-size: 20px; }
   .fan figcaption a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
   .fan figcaption a:hover { color: var(--gold); }
   .fan figcaption img { width: 32px; height: 32px; border-radius: 9px; }
@@ -112,8 +109,6 @@
     .hero, .offer, .talk { grid-template-columns: 1fr; }
     .phone { width: min(70vw, 280px); transform: rotate(-3deg); }
     .stage { width: min(76vw, 300px); }
-    .stage::before { transform: rotate(8deg) translate(6%, -2%); }
-    .stage::after { transform: rotate(-10deg) translate(-6%, 4%); }
     .fan figure { width: 46vw; }
     .fan .cal { left: -6%; } .fan .cake { right: -6%; }
   }
@@ -124,14 +119,14 @@
 <div class="wrap">
   <header class="top">
     <a class="name" href="#">OneKash Labs</a>
-    <a class="mail" href="mailto:kash@onekash.org">kash@onekash.org</a>
+    <a class="mail" href="#" data-mail=""><span data-addr>kash at onekash dot org</span></a>
   </header>
 
   <section class="hero">
     <div>
       <h1>What should we build together?</h1>
       <p>We make private, open-source apps. We can teach you to build one, or make an open-source app yours.</p>
-      <a class="btn" href="mailto:kash@onekash.org">Email us</a>
+      <a class="btn" href="#" data-mail="">Email us</a>
     </div>
     <div class="stage">
     <div class="phone" aria-label="Apps by OneKash Labs, and a space for yours">
@@ -142,7 +137,7 @@
           <a class="slot" href="https://kashpass.onekash.org"><img src="img/kashpass.png" alt=""><span>KashPass</span></a>
           <a class="slot" href="https://kashcake.onekash.org"><img src="img/kashcake.png" alt=""><span>KashCake</span></a>
           <a class="slot" href="https://github.com/icloud-calendar-mcp/icloud-calendar-mcp"><img src="img/mcp.svg" alt=""><span>iCloud Calendar MCP</span></a>
-          <a class="slot mine" href="mailto:kash@onekash.org"><div class="yours" aria-hidden="true">+</div><span>Yours?</span></a>
+          <a class="slot mine" href="#" data-mail=""><div class="yours" aria-hidden="true">+</div><span>Yours?</span></a>
           <div class="slot ghost" aria-hidden="true"></div>
         </div>
         <img class="wallkash" src="img/kash-wave.webp" alt="">
@@ -155,7 +150,7 @@
 
 <div class="wrap">
   <section class="offers" aria-label="What we do">
-    <div class="offer learn"><h2>Learn</h2><p>We'll teach you to build an app, from first screen to store.<br><a class="wait" href="mailto:kash@onekash.org?subject=Bootcamp%20waitlist">Join the bootcamp waitlist</a></p></div>
+    <div class="offer learn"><h2>Learn</h2><p>We'll teach you to build an app, from first screen to store.<br><a class="wait" href="#" data-mail="Bootcamp waitlist">Join the bootcamp waitlist</a></p></div>
     <div class="offer custom"><h2>Customize</h2><p>An open-source app whose license allows it, with your name, colours and features.</p></div>
     <div class="offer deploy"><h2>Deploy</h2><p>Our apps set up for your team and kept running.</p></div>
   </section>
@@ -164,7 +159,7 @@
 <section class="built">
   <div class="wrap">
     <h2>Apps we make and maintain.</h2>
-    <p class="lead">Open source, no ads, nothing collected. On real phones today.</p>
+    <p class="lead">Open source, no ads, nothing collected. Out in the world today.</p>
     <div class="fan">
       <figure class="cal"><figcaption><a href="https://kashcal.onekash.org"><img src="img/kashcal.png" alt="">KashCal</a></figcaption><div class="device"><img src="img/screen-kashcal.png" alt="KashCal's week view"></div></figure>
       <figure class="pass"><figcaption><a href="https://kashpass.onekash.org"><img src="img/kashpass.png" alt="">KashPass</a></figcaption><div class="device"><img src="img/screen-kashpass.png" alt="KashPass's entry list"></div></figure>
@@ -179,11 +174,22 @@
   <div class="talk" id="talk">
     <div>
       <h2>Tell us what you have in mind.</h2>
-      <a class="btn" href="mailto:kash@onekash.org">Email kash@onekash.org</a>
+      <a class="btn" href="#" data-mail="">Email <span data-addr>kash at onekash dot org</span></a>
     </div>
   </div>
 </div>
 </section>
 <footer><div class="wrap foot"><span>Open source. No ads. Your data stays yours.</span><span>OneKash Labs</span></div></footer>
+<script>
+  // Builds the address at load, so it never appears in the page source for scrapers to read.
+  (function () {
+    var a = ['kash', 'onekash.org'].join('@');
+    document.querySelectorAll('[data-mail]').forEach(function (el) {
+      var s = el.getAttribute('data-mail');
+      el.href = 'mailto:' + a + (s ? '?subject=' + encodeURIComponent(s) : '');
+    });
+    document.querySelectorAll('[data-addr]').forEach(function (el) { el.textContent = a; });
+  })();
+</script>
 </body>
 </html>
