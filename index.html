@@ -41,14 +41,15 @@
   .stage { position: relative; justify-self: center; width: min(100%, 380px); }
   .stage .phone { position: relative; z-index: 1; }
   .phone {
-    background: #0F2A25; border-radius: 52px; padding: 12px; transform: rotate(-4deg);
+    background: #12806F; border-radius: 52px; padding: 12px; transform: rotate(-4deg);
     width: min(100%, 360px); margin: 0 auto;
     box-shadow: 0 40px 80px -20px rgba(15, 42, 37, .45), 0 0 0 1px rgba(255, 255, 255, .06) inset;
   }
   .wall {
     border-radius: 42px; padding: 14px 22px 22px; color: #E9F6F2;
     aspect-ratio: 9 / 17; display: flex; flex-direction: column;
-    background: radial-gradient(120% 80% at 80% 0%, #1E6E61 0%, var(--wall) 55%, #0E3B34 100%);
+    background: radial-gradient(120% 80% at 80% 0%, #24326B 0%, #141D4A 55%, #0B1233 100%);
+    background-color: #141D4A;
   }
   .status { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; padding: 2px 6px 20px; opacity: .85; }
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 12px; }
@@ -73,9 +74,9 @@
   .offers { padding: clamp(56px, 8vw, 104px) 0; }
   .offers h2 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -.025em; max-width: 18ch; margin-bottom: 40px; }
   .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .tile { display: block; text-decoration: none; border-radius: 16px; padding: 24px 24px 26px; border-inline-start: 10px solid var(--tile); background: color-mix(in srgb, var(--tile) 18%, #020727); color: #F3EFE4; }
-  .tile:hover { background: color-mix(in srgb, var(--tile) 28%, #020727); }
-  .tile h3 { font-family: var(--display); font-weight: 700; font-size: 25px; line-height: 1.15; margin-bottom: 10px; }
+  .tile { display: block; text-decoration: none; border-radius: 16px; padding: 24px 24px 26px; border-inline-start: 10px solid var(--tile); background: color-mix(in srgb, var(--tile) 26%, #020727); color: #F3EFE4; }
+  .tile:hover { background: color-mix(in srgb, var(--tile) 36%, #020727); }
+  .tile h3 { font-family: var(--display); font-weight: 700; font-size: 25px; line-height: 1.15; margin-bottom: 10px; color: var(--tile-ink); }
   .tile p { color: #C9CDE3; font-size: 18px; }
 
   /* Proof: the one dark band, three of the apps fanned out as phones showing their real screens. */
@@ -126,9 +127,9 @@
   }
   @media (max-width: 480px) { .top a.mail { font-size: 15px; } }
   :root { --paper: #020727; --ink: #F3EFE4; --ink-soft: #A9AECB; }
-  .btn { background: var(--teal); color: #020727; } .btn:hover { background: var(--gold); }
-  .built { background: #0B1240; } .built .tool { background: #0B1240; border-top-color: #222A5A; }
-  .talkband { background: var(--teal); } .talkband h2 { color: #020727; } .talkband .btn { background: #020727; color: #F3EFE4; } .talkband .btn:hover { background: #0B1240; color: #FFFFFF; }
+  .btn { background: var(--gold); color: #020727; } .btn:hover { background: #FFD978; }
+  .built { background: #141B4A; } .built .tool { background: #141B4A; border-top-color: #2A3366; }
+  .talkband { background: var(--navy); border-top: 1px solid #1C2350; } .talkband h2 { color: #F3EFE4; } .talkband .btn { background: var(--gold); color: #020727; } .talkband .btn:hover { background: #FFD978; color: #020727; }
   footer { background: #01041A; }
 </style>
 </head>
@@ -169,9 +170,9 @@
   <section class="offers" aria-labelledby="offers-h">
     <h2 id="offers-h">Whatever you're building, sorted.</h2>
     <div class="tiles">
-      <a class="tile" style="--tile: #4A90D9" href="#" data-mail="Bootcamp waitlist"><h3>Learn to build your own app</h3><p>From first screen to store. Join the bootcamp waitlist.</p></a>
-      <a class="tile" style="--tile: #EF5F78" href="#talk"><h3>An open-source app, with your name on it</h3><p>Your colours and features, where the license allows.</p></a>
-      <a class="tile" style="--tile: #1E9E8A" href="#talk"><h3>Our apps, running for your team</h3><p>Set up and kept up.</p></a>
+      <a class="tile" style="--tile: #4A90D9; --tile-ink: #A9CCF2" href="#" data-mail="Bootcamp waitlist"><h3>Learn to build your own app</h3><p>From first screen to store. Join the bootcamp waitlist.</p></a>
+      <a class="tile" style="--tile: #EF5F78; --tile-ink: #FFB3C0" href="#talk"><h3>An open-source app, with your name on it</h3><p>Your colours and features, where the license allows.</p></a>
+      <a class="tile" style="--tile: #1E9E8A; --tile-ink: #8BE0D0" href="#talk"><h3>Our apps, running for your team</h3><p>Set up and kept up.</p></a>
     </div>
   </section>
 </div>
