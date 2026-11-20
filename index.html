@@ -113,20 +113,28 @@
     .fan .cal { left: -6%; } .fan .cake { right: -6%; }
   }
   @media (max-width: 480px) { .top a.mail { font-size: 15px; } }
+  :root { --paper: #020727; --ink: #F3EFE4; --ink-soft: #A9AECB; }
+  .offer h2, .offer.learn h2, .offer.custom h2, .offer.deploy h2 { color: var(--ink); }
+  .offer .wait { color: var(--gold); }
+  .offer + .offer { border-top-color: #1C2350; }
+  .btn { background: var(--teal); color: #020727; } .btn:hover { background: var(--gold); }
+  .built { background: #0B1240; } .built .tool { background: #0B1240; border-top-color: #222A5A; }
+  .talkband { background: var(--teal); } .talkband h2 { color: #020727; } .talkband .btn { background: #020727; color: #F3EFE4; }
+  footer { background: #01041A; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="name" href="#">OneKash Labs</a>
-    <a class="mail" href="#" data-mail=""><span data-addr>kash at onekash dot org</span></a>
+    <a class="mail" href="#" data-mail="">Contact us</a>
   </header>
 
   <section class="hero">
     <div>
       <h1>What should we build together?</h1>
-      <p>We make private, open-source apps. We can teach you to build one, or make an open-source app yours.</p>
-      <a class="btn" href="#" data-mail="">Email us</a>
+      <p>We make private, open-source apps. We also teach app building, customize open-source apps and set them up for teams.</p>
+      <a class="btn" href="#talk">Start a project</a>
     </div>
     <div class="stage">
     <div class="phone" aria-label="Apps by OneKash Labs, and a space for yours">
@@ -137,7 +145,7 @@
           <a class="slot" href="https://kashpass.onekash.org"><img src="img/kashpass.png" alt=""><span>KashPass</span></a>
           <a class="slot" href="https://kashcake.onekash.org"><img src="img/kashcake.png" alt=""><span>KashCake</span></a>
           <a class="slot" href="https://github.com/icloud-calendar-mcp/icloud-calendar-mcp"><img src="img/mcp.svg" alt=""><span>iCloud Calendar MCP</span></a>
-          <a class="slot mine" href="#" data-mail=""><div class="yours" aria-hidden="true">+</div><span>Yours?</span></a>
+          <a class="slot mine" href="#talk"><div class="yours" aria-hidden="true">+</div><span>Yours?</span></a>
           <div class="slot ghost" aria-hidden="true"></div>
         </div>
         <img class="wallkash" src="img/kash-wave.webp" alt="">
@@ -151,7 +159,7 @@
 <div class="wrap">
   <section class="offers" aria-label="What we do">
     <div class="offer learn"><h2>Learn</h2><p>We'll teach you to build an app, from first screen to store.<br><a class="wait" href="#" data-mail="Bootcamp waitlist">Join the bootcamp waitlist</a></p></div>
-    <div class="offer custom"><h2>Customize</h2><p>An open-source app whose license allows it, with your name, colours and features.</p></div>
+    <div class="offer custom"><h2>Customize</h2><p>Open-source apps with your name, colours and features, where the license allows.</p></div>
     <div class="offer deploy"><h2>Deploy</h2><p>Our apps set up for your team and kept running.</p></div>
   </section>
 </div>
@@ -173,13 +181,13 @@
 <div class="wrap">
   <div class="talk" id="talk">
     <div>
-      <h2>Tell us what you have in mind.</h2>
-      <a class="btn" href="#" data-mail="">Email <span data-addr>kash at onekash dot org</span></a>
+      <h2>Let's build it.</h2>
+      <a class="btn" href="#" data-mail="">Contact us</a>
     </div>
   </div>
 </div>
 </section>
-<footer><div class="wrap foot"><span>Open source. No ads. Your data stays yours.</span><span>OneKash Labs</span></div></footer>
+<footer><div class="wrap foot"><span>© 2026 OneKash Labs</span></div></footer>
 <script>
   // Builds the address at load, so it never appears in the page source for scrapers to read.
   (function () {
@@ -188,7 +196,6 @@
       var s = el.getAttribute('data-mail');
       el.href = 'mailto:' + a + (s ? '?subject=' + encodeURIComponent(s) : '');
     });
-    document.querySelectorAll('[data-addr]').forEach(function (el) { el.textContent = a; });
   })();
 </script>
 </body>
