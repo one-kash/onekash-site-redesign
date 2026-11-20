@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OneKash Labs</title>
+<style>
+  :root {
+    --bg: #0B1512; --bg2: #101D19; --line: #1E2D28; --ink: #F4F7F6; --muted: #9AA8A3; --teal: #45C2AD;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "Noto Sans", system-ui, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+  .logo { font-weight: 800; font-size: 22px; }
+  .logo span { color: var(--teal); }
+  nav ul { display: flex; gap: 28px; list-style: none; color: var(--muted); font-size: 16px; }
+
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 14px; font-weight: 700; font-size: 17px; }
+  .btn-teal { background: var(--teal); color: #08110E; }
+  .btn-line { border: 2px solid var(--line); color: var(--ink); }
+
+  .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; padding: 72px 0 96px; }
+  .hero h1 { font-size: 72px; line-height: 1.02; letter-spacing: -2px; font-weight: 800; }
+  .hero p { margin: 24px 0 36px; font-size: 21px; line-height: 1.5; color: var(--muted); max-width: 520px; }
+  .hero .ctas { display: flex; gap: 14px; }
+  .hero-art { position: relative; text-align: center; }
+  .hero-art .kash { width: 300px; }
+  .tiles { display: flex; gap: 14px; justify-content: center; margin-top: 18px; }
+  .tiles img, .plus { width: 72px; height: 72px; border-radius: 18px; }
+  .plus { border: 3px dashed var(--teal); display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 40px; font-weight: 300; }
+
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .eyebrow { color: var(--teal); font-weight: 700; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; }
+  h2 { font-size: 44px; letter-spacing: -1px; margin: 10px 0 40px; font-weight: 800; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card { background: var(--bg2); border: 1px solid var(--line); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; }
+  .card img.pose { width: 120px; align-self: flex-start; margin-bottom: 14px; }
+  .card h3 { font-size: 26px; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 17px; line-height: 1.5; flex: 1; }
+  .card .more { margin-top: 20px; color: var(--teal); font-weight: 700; }
+
+  .built { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .app { display: flex; gap: 18px; align-items: flex-start; background: var(--bg2); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+  .app img { width: 64px; height: 64px; border-radius: 16px; flex: none; }
+  .app h3 { font-size: 22px; margin-bottom: 6px; }
+  .app p { color: var(--muted); font-size: 16px; line-height: 1.45; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: s; }
+  .step { border-top: 3px solid var(--teal); padding-top: 18px; }
+  .step::before { counter-increment: s; content: "0" counter(s); color: var(--teal); font-weight: 800; font-size: 15px; }
+  .step h3 { font-size: 22px; margin: 8px 0; }
+  .step p { color: var(--muted); font-size: 16px; line-height: 1.45; }
+
+  .tool { max-width: 560px; }
+
+  .talk { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; background: var(--bg2); border: 1px solid var(--line); border-radius: 32px; padding: 48px 56px; }
+  .talk img { width: 200px; }
+  .talk h2 { margin: 0 0 12px; }
+  .talk p { color: var(--muted); font-size: 19px; margin-bottom: 26px; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 15px; display: flex; justify-content: space-between; border-top: 1px solid var(--line); margin-top: 88px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#">OneKash <span>Labs</span></a>
+    <ul><li><a href="#offerings">What we do</a></li><li><a href="#built">Built here</a></li><li><a href="#tools">Open tools</a></li><li><a href="#talk">Contact</a></li></ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>What should we build together?</h1>
+      <p>A small studio that builds private, open-source apps, teaches app building, and makes our apps yours.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#talk">Work with us</a><a class="btn btn-line" href="#built">See what we've built</a></div>
+    </div>
+    <div class="hero-art">
+      <img class="kash" src="img/kash-wave.webp" alt="Kash waving">
+      <div class="tiles">
+        <img src="img/kashcal.png" alt="KashCal"><img src="img/kashpass.png" alt="KashPass"><img src="img/kashcake.png" alt="KashCake"><img src="img/mcp.svg" alt="iCloud Calendar MCP">
+        <a class="plus" href="#talk" aria-label="Your project">+</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section id="offerings"><div class="wrap">
+  <p class="eyebrow">What we do</p>
+  <h2>Learn it, make it yours, or let us run it.</h2>
+  <div class="cards">
+    <div class="card"><img class="pose" src="img/kash_mug.webp" alt=""><h3>Learn</h3><p>We'll teach you to build an app, start to finish.</p><a class="more" href="#talk">Ask about bootcamps →</a></div>
+    <div class="card"><img class="pose" src="img/kash_gift.webp" alt=""><h3>Customize</h3><p>Our open-source apps with your name, your colors and your defaults.</p><a class="more" href="#talk">Ask about a custom build →</a></div>
+    <div class="card"><img class="pose" src="img/kash_armful.webp" alt=""><h3>Deploy</h3><p>Our apps set up for your team or business.</p><a class="more" href="#talk">Ask about a setup →</a></div>
+  </div>
+</div></section>
+
+<section id="built"><div class="wrap">
+  <p class="eyebrow">Built here</p>
+  <h2>Apps people use every day.</h2>
+  <div class="built">
+    <div class="app"><img src="img/kashcal.png" alt=""><div><h3>KashCal</h3><p>Every calendar you use, in one app. 63 languages.</p></div></div>
+    <div class="app"><img src="img/kashpass.png" alt=""><div><h3>KashPass</h3><p>Your KeePass vault on your phone. No internet permission.</p></div></div>
+    <div class="app"><img src="img/kashcake.png" alt=""><div><h3>KashCake</h3><p>Birthdays and anniversaries from your contacts. No internet access.</p></div></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <p class="eyebrow">How we work</p>
+  <h2>From a first call to something you own.</h2>
+  <div class="steps">
+    <div class="step"><h3>Talk</h3><p>Tell us what you need.</p></div>
+    <div class="step"><h3>Plan</h3><p>We agree on scope and time.</p></div>
+    <div class="step"><h3>Build</h3><p>You see progress as we go.</p></div>
+    <div class="step"><h3>Hand over</h3><p>You get the result and the code.</p></div>
+  </div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <p class="eyebrow">Open tools</p>
+  <h2>For developers.</h2>
+  <div class="app tool"><img src="img/mcp.svg" alt=""><div><h3>iCloud Calendar MCP</h3><p>Gives AI agents read and write access to iCloud Calendar.</p></div></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="talk" id="talk">
+    <img src="img/kash_cheer.webp" alt="">
+    <div><h2>Just talk to us.</h2><p>Bootcamps, custom builds or a setup for your team: one email starts it.</p><a class="btn btn-teal" href="mailto:kash@onekash.org">kash@onekash.org</a></div>
+  </div>
+</div></section>
+
+<div class="wrap"><footer><span>Open source. No ads. Your data stays yours.</span><span>© OneKash Labs</span></footer></div>
+</body>
+</html>
